@@ -2,9 +2,25 @@ package org.Temirjohn.entity.enemies;
 
 import org.Temirjohn.entity.Direction;
 
+/**
+ * Enemy factory that creates enemy entities
+ */
+
 public class EnemyFactory {
+
+	/**
+	 * Default constructor
+	 */
     public EnemyFactory() { }
 
+
+	/**
+	 * Creates base enemy entities of various types
+	 * @param x <code>int</code> x coordinate
+	 * @param y <code>int</code> y coordinate
+	 * @param type <code>EnemyType</code> Type of enemy to create
+	 * @return IEnemy entity
+	 */
     public IEnemy createEnemy(int x, int y, EnemyType type, Direction dir) {
         switch(type) {
 	        case EnemyType1:
@@ -17,7 +33,14 @@ public class EnemyFactory {
 	        	return null;
         }    	
     }
-    
+
+	/**
+	 * Creates a decorated enemy from a base enemy object
+	 * decoratorType is either 1 (health bonus) or 2 (strength bonus)
+	 * @param baseEnemy The base enemy to decorate
+	 * @param decoratorType The type of bonus to give the base enemy. 1 = health bonus, 2 = strength bonus
+	 * @return
+	 */
     public IEnemy createDecoratedEnemy(Enemy baseEnemy, int decoratorType) {
     	if(decoratorType == 1)
     		return new UpgradedEnemy30H(baseEnemy);

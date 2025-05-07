@@ -1,5 +1,9 @@
 package org.Temirjohn.entity.enemies;
 
+/**
+ * Enumeration for the difficulty of the game
+ */
+
 public enum Difficulty {
 	
 	EASY("/difficulties/Easy-Difficulty.txt"),
