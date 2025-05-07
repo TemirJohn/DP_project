@@ -1,5 +1,9 @@
 package org.Temirjohn.entity.enemies;
 
+/**
+ * Holds the attributes for the different types of enemies
+ */
+
 enum EnemyType {
 	EnemyType1(1, 5, "EnemyType1", "/enemies/EnemyRed.png"),
 	EnemyType2(2, 10, "EnemyType2", "/enemies/EnemyBlue.png"),
