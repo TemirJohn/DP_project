@@ -11,7 +11,6 @@ import main.UtilityCenter;
 
 /**
  * {@summary Parent of all entities in the game. Handles basic properties of all entities like position and sprite.}
- * @author Ryan Sharp, refactored by Ricardo Almeida
  *
  */
 public abstract class Entity {
