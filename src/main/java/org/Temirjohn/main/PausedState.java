@@ -9,8 +9,6 @@ import org.Temirjohn.ui.PauseUI;
 
 /**
  * Game state used when the player is in a level and the game is paused
- * @author Ryan Sharp
- *
  */
 class PausedState implements GameState {
 
