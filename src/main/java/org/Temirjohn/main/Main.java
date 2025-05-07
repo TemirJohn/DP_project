@@ -1,17 +1,49 @@
 package org.Temirjohn.main;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.awt.Dimension;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-    }
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
+
+/**
+ * 
+ * {@summary This is the only class that needs to be run in order to start the game.
+ * 			 This class will be responsible for creating the graphical window that the game runs in.}
+ *
+ */
+public class Main {
+
+	private static JLayeredPane pane;
+	
+	/**
+	 * {@summary Run this method to start the game!}
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		JFrame window = new JFrame();
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setResizable(false);
+		window.setTitle("Tower Defense");
+		pane = window.getLayeredPane();
+		
+		GamePanel gamePanel = GamePanel.getInstance(); //Updated this to use singleton pattern rather than creating instance variable
+		
+		pane.setSize(new Dimension(gamePanel.SCREEN_WIDTH, gamePanel.SCREEN_HEIGHT));
+		pane.setLocation(0, 0);
+		pane.add(gamePanel, Integer.valueOf(0));
+		
+		window.setSize(gamePanel.SCREEN_WIDTH + (gamePanel.TILE_SIZE / 2) - 10, gamePanel.SCREEN_HEIGHT + gamePanel.TILE_SIZE - 10);
+		
+		window.setLocationRelativeTo(null);
+		window.setVisible(true);
+		
+		gamePanel.requestFocusInWindow();
+		gamePanel.startGameThread();
+	}
+	
+	/**
+	 * Get the layered pane in the application JFrame. Used by UI classes to add elements on top of GamePanel.
+	 * @return The layered pane of the JFrame
+	 */
+	public static JLayeredPane getPane() { return pane; }
 }
